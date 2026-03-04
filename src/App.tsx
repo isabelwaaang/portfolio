@@ -6,6 +6,11 @@ import AboutMe from "./pages/about-me"
 import ImageApi from "./pages/image-api"
 import Contact from "./pages/contact"
 
+import MailMares from "./pages/project pages/mail-mares-project"
+import Potions from "./pages/project pages/potions-project"
+import Vamoose from "./pages/project pages/vamoose-project"
+import Lily from "./pages/project pages/lily-project"
+
 import FOCUS from "./assets/music/FOCUS.mp3"
 import HER from "./assets/music/HER.mp3"
 import ImaginaryFriend from "./assets/music/Imaginary-Friend.mp3"
@@ -130,10 +135,26 @@ function App() {
               {/* projects */}
               {projectsOpen && (
                 <div className="ml-8 mt-1 flex flex-col gap-1">
-                  <div className="text-[#83B0E1] font-pixel">Project 1</div>
-                  <div className="text-[#83B0E1] font-pixel">Project 2</div>
-                  <div className="text-[#83B0E1] font-pixel">Project 3</div>
-                  <div className="text-[#83B0E1] font-pixel">Project 4</div>
+                  <Link
+                    to="/lily"
+                    className="text-[#83B0E1] font-pixel">lily
+                  </Link>
+                  <Link
+                    to="/mail-mares"
+                    className="text-[#83B0E1] font-pixel">mail mares
+                  </Link>
+                  {/* 
+                  <Link
+                    to="/potions"
+                    className="text-[#83B0E1] font-pixel">potions
+                  </Link>
+                  <Link
+                    to="/vamoose"
+                    className="text-[#83B0E1] font-pixel">vamoose
+                  </Link>
+                  */}
+                  
+                  
                 </div>
               )}
 
@@ -163,13 +184,18 @@ function App() {
                       path="/"
                       element={
                         <div className="text-[#83B0E1] font-pixel flex items-center justify-center h-full">
-                          choose a folder on the right to get started!
+                          choose a folder on the left to get started!
                         </div>
                       }
                 />
                 <Route path="/about-me" element={<AboutMe />} />
                 <Route path="/image-api" element={<ImageApi />} />
                 <Route path="/contact" element={<Contact />} />
+
+                <Route path="/mail-mares" element={<MailMares />} />
+                <Route path="/potions" element={<Potions />} />
+                <Route path="/vamoose" element={<Vamoose />} />
+                <Route path="/lily" element={<Lily />} />
               </Routes>
               
             </div>
