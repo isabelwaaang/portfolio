@@ -1,6 +1,6 @@
 import MailMaresPNG from "../../assets/project/mail mares.jpg"
 import ItchIcon from "../../assets/icons/itch icon.png"
-import GithubIcon from "../../assets/icons/github icon.png"
+import GithubIcon from "../../assets/icons/github-icon.png"
 
 export default function Contact(){
     return(

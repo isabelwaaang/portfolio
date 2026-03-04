@@ -1,5 +1,5 @@
 import LilyIcon from "../../assets/project/lily icon.png"
-import GithubIcon from "../../assets/icons/github icon.png"
+import GithubIcon from "../../assets/icons/github-icon.png"
 import DevpostIcon from "../../assets/icons/devpost icon.png"
 import FigmaIcon from "../../assets/icons/figma icon.png"
 
