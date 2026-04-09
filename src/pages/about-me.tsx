@@ -21,7 +21,7 @@ export default function AboutMe(){
             </div>
             
             <div className="text-[#83B0E1] font-pixel gap-1 mx-2">
-                hi!! im isabel and i am a computer science and engineering student at UC irvine
+                hi!! im isabel and i am a computer science and engineering student at uc irvine
             </div>
             <div className="text-[#83B0E1] font-pixel font-bold mt-4 mx-2">
                 main interests:
@@ -34,6 +34,14 @@ export default function AboutMe(){
             </div>
 
             <div className="text-[#83B0E1] font-bold font-pixel mt-4 mx-2">
+                honors:
+            </div>
+            <div className="text-[#83B0E1] font-pixel mx-4">
+                <div>• advanced learning and international baccalaureate graduate from the bellevue school district </div>
+                <div>• deans honor list @ uci</div>
+            </div>
+
+            <div className="text-[#83B0E1] font-bold font-pixel mt-4 mx-2">
                 hobbies + other interests:
             </div>
             <div className="text-[#83B0E1] font-pixel mx-4">
@@ -43,7 +51,7 @@ export default function AboutMe(){
             </div>
 
             <div className="text-[#83B0E1] font-pixel font-bold mt-4 mx-2">
-                languages:
+                languages [ fluent ]:
             </div>
             <div className="text-[#83B0E1] font-pixel mx-4">
                 <div>• english</div>
@@ -85,9 +93,6 @@ export default function AboutMe(){
                 </div>
                 <div className="bg-[#83B0E1] text-white px-3 py-1 rounded-sm text-sm font-pixel">
                     vite
-                </div>
-                <div className="bg-[#83B0E1] text-white px-3 py-1 rounded-sm text-sm font-pixel">
-                    express.js
                 </div>
                 <div className="bg-[#83B0E1] text-white px-3 py-1 rounded-sm text-sm font-pixel">
                     git

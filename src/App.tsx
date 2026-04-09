@@ -6,10 +6,19 @@ import AboutMe from "./pages/about-me"
 import ImageApi from "./pages/image-api"
 import Contact from "./pages/contact"
 
-import MailMares from "./pages/project pages/mail-mares-project"
-import Potions from "./pages/project pages/potions-project"
-import Vamoose from "./pages/project pages/vamoose-project"
-import Lily from "./pages/project pages/lily-project"
+import MailMares from "./pages/project-pages/mail-mares-project"
+import Potions from "./pages/project-pages/potions-project"
+import Vamoose from "./pages/project-pages/vamoose-project"
+import Lily from "./pages/project-pages/lily-project"
+
+import SaintsRobotics from "./pages/experience-pages/saints-robotics"
+import Quizbowl from "./pages/experience-pages/quizbowl"
+
+import Movies from "./pages/interests-pages/movies"
+import Music from "./pages/interests-pages/music"
+import Shows from "./pages/interests-pages/shows"
+import VideoGames from "./pages/interests-pages/video-games"
+import Books from "./pages/interests-pages/books"
 
 import FOCUS from "./assets/music/FOCUS.mp3"
 import HER from "./assets/music/HER.mp3"
@@ -26,6 +35,8 @@ import BackButton from "./assets/music player/back-button.png"
 
 function App() {
   const [projectsOpen, setProjectsOpen] = useState(false);
+  const [experenceOpen, setExperienceOpen] = useState(false);
+  const [interestsOpen, setInterestsOpen] = useState(false);
 
   {/* music player stuff */}
   const [isPlaying, setIsPlaying] = useState(false);
@@ -64,7 +75,7 @@ function App() {
   return (
     
 
-    <main>
+    <main className="bg-[#e1ecf7]">
       {/* music player window */}
       <div className="absolute top-[30%] left-10 bg-[#83B0E1] text-white w-[20%] h-[20%] flex items-center justify-center pt-10">
         <div className="absolute top-2 left-5 text-white text-lg font-pixel">
@@ -113,7 +124,7 @@ function App() {
           <div className="bg-[#E1ECF7] w-[95%] h-[93%] relative">
 
             {/* left panel */}
-            <div className="bg-white w-[30%] h-[100%] border-8 border-[#AECBEB] p-4 pl-6 flex flex-col gap-2">
+            <div className="bg-white w-[30%] h-[100%] border-8 border-[#AECBEB] p-4 pl-6 flex flex-col gap-2 overflow-auto">
               <Link
                 to="/"
                 className="text-[#83B0E1] text-lg font-pixel text-left">
@@ -143,7 +154,7 @@ function App() {
                     to="/mail-mares"
                     className="text-[#83B0E1] font-pixel">mail mares
                   </Link>
-                  {/* 
+                  
                   <Link
                     to="/potions"
                     className="text-[#83B0E1] font-pixel">potions
@@ -152,17 +163,67 @@ function App() {
                     to="/vamoose"
                     className="text-[#83B0E1] font-pixel">vamoose
                   </Link>
-                  */}
-                  
-                  
                 </div>
               )}
 
-              <Link
-                to="/image-api"
-                className="text-[#83B0E1] text-lg font-pixel text-left ml-4">
-                image api
-              </Link>
+              {/* experience button */}
+              <button
+                className="text-[#83B0E1] text-lg font-pixel text-left ml-4"
+                onClick={() => setExperienceOpen(!experenceOpen)}
+              >
+                experience
+              </button>
+
+              {/* experience */}
+              {experenceOpen && (
+                <div className="ml-8 mt-1 flex flex-col gap-1">
+                  <Link
+                    to="/saints-robotics"
+                    className="text-[#83B0E1] font-pixel">saints robotics
+                  </Link>
+                  <Link
+                    to="/quizbowl"
+                    className="text-[#83B0E1] font-pixel">quizbowl
+                  </Link>
+                </div>
+              )}
+
+              {/* interests button */}
+              <button
+                className="text-[#83B0E1] text-lg font-pixel text-left ml-4"
+                onClick={() => setInterestsOpen(!interestsOpen)}
+              >
+                interests
+              </button>
+
+              {/* interests */}
+              {interestsOpen && (
+                <div className="ml-8 mt-1 flex flex-col gap-1">
+                  <Link
+                    to="/movies"
+                    className="text-[#83B0E1] font-pixel">movies
+                  </Link>
+                  {/*
+                  <Link
+                    to="/shows"
+                    className="text-[#83B0E1] font-pixel">shows
+                  </Link>
+                  <Link
+                    to="/video-games"
+                    className="text-[#83B0E1] font-pixel">video games
+                  </Link>
+                  <Link
+                    to="/books"
+                    className="text-[#83B0E1] font-pixel">books
+                  </Link>
+                  */}
+                  <Link
+                    to="/music"
+                    className="text-[#83B0E1] font-pixel">music
+                  </Link>
+                </div>
+              )}
+
               <Link
                 to="/contact"
                 className="text-[#83B0E1] text-lg font-pixel text-left ml-4">
@@ -196,6 +257,16 @@ function App() {
                 <Route path="/potions" element={<Potions />} />
                 <Route path="/vamoose" element={<Vamoose />} />
                 <Route path="/lily" element={<Lily />} />
+
+                <Route path="/saints-robotics" element={<SaintsRobotics />} />
+                <Route path="/quizbowl" element={<Quizbowl />} />
+
+                <Route path="/movies" element={<Movies />} />
+                <Route path="/music" element={<Music />} />
+                <Route path="/shows" element={<Shows />} />
+                <Route path="/video-games" element={<VideoGames />} />
+                <Route path="/books" element={<Books />} />
+
               </Routes>
               
             </div>
