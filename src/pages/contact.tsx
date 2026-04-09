@@ -57,7 +57,7 @@ export default function Contact(){
 
                 {/* github */}
                 <div
-                    onClick={() => window.open("https://github.com/p1cotee", "_blank")}
+                    onClick={() => window.open("https://github.com/isabelwaaang", "_blank")}
                     className="flex flex-col items-center cursor-pointer select-none"
                 >
                     <img src={GithubIcon} className="h-20 w-auto object-contain" />
