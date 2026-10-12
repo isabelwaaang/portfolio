@@ -13,6 +13,7 @@ import Lily from "./pages/project-pages/lily-project"
 
 import SaintsRobotics from "./pages/experience-pages/saints-robotics"
 import Quizbowl from "./pages/experience-pages/quizbowl"
+import LogEase from "./pages/experience-pages/logease"
 
 import Movies from "./pages/interests-pages/movies"
 import Music from "./pages/interests-pages/music"
@@ -211,6 +212,10 @@ function App() {
               {experenceOpen && (
                 <div className="ml-8 mt-1 flex flex-col gap-1">
                   <Link
+                    to="/logease"
+                    className="text-[#83B0E1] font-pixel">logease
+                  </Link>
+                  <Link
                     to="/saints-robotics"
                     className="text-[#83B0E1] font-pixel">saints robotics
                   </Link>
@@ -295,6 +300,7 @@ function App() {
 
                 <Route path="/saints-robotics" element={<SaintsRobotics />} />
                 <Route path="/quizbowl" element={<Quizbowl />} />
+                <Route path="/logease" element={<LogEase />} />
 
                 <Route path="/movies" element={<Movies />} />
                 <Route path="/music" element={<Music />} />
