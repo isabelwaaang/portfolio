@@ -230,7 +230,7 @@ function App() {
               </button>
               */}
 
-              {/* interests */}
+              {/* interests 
               {interestsOpen && (
                 <div className="ml-8 mt-1 flex flex-col gap-1">
                   <Link
@@ -250,13 +250,14 @@ function App() {
                     to="/books"
                     className="text-[#83B0E1] font-pixel">books
                   </Link>
-                  */}
+                  
                   <Link
                     to="/music"
                     className="text-[#83B0E1] font-pixel">music
                   </Link>
                 </div>
               )}
+              */}
 
               <Link
                 to="/contact"
