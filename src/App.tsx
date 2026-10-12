@@ -33,10 +33,16 @@ import PauseButton from "./assets/music player/pause-button.png"
 import SkipButton from "./assets/music player/forward-button.png"
 import BackButton from "./assets/music player/back-button.png"
 
+import MusicPlayerIcon from "./assets/desktop/icons/music-player.png"
+//import FilmIcon from "./assets/desktop/icons/film-icon.png"
+//import GamesIcon from "./assets/desktop/icons/games-icon.png"
+
 function App() {
   const [projectsOpen, setProjectsOpen] = useState(false);
   const [experenceOpen, setExperienceOpen] = useState(false);
-  const [interestsOpen, setInterestsOpen] = useState(false);
+  //const [interestsOpen, setInterestsOpen] = useState(false);
+
+  const [isMusicOpen, setIsMusicOpen] = useState(false);
 
   {/* music player stuff */}
   const [isPlaying, setIsPlaying] = useState(false);
@@ -76,41 +82,68 @@ function App() {
     
 
     <main className="bg-[#e1ecf7]">
-      {/* music player window */}
-      <div className="absolute top-[30%] left-10 bg-[#83B0E1] text-white w-[20%] h-[20%] flex items-center justify-center pt-10">
-        <div className="absolute top-2 left-5 text-white text-lg font-pixel">
+      {/* music player icon */}
+      <div
+        className="absolute top-[2%] left-[2%] w-24 h-auto cursor-pointer"
+        onClick={() => setIsMusicOpen(true)}
+      >
+        <img src={MusicPlayerIcon} className="w-full h-full [image-rendering:pixelated]" />
+        <div className="absolute top-20 left-1 text-[#83B0E1] text-lg font-pixel">music.exe</div>
+      </div>
+
+      {/* film  icon 
+      <div className="absolute top-[20%] left-[2%] w-24 h-auto">
+        <img src={FilmIcon} className="w-full h-full [image-rendering:pixelated]" />
+        <div className="absolute top-20 left-3 text-[#83B0E1] text-lg font-pixel">film.exe</div>
+      </div>
+      */}
+
+      {/* games  icon 
+      <div className="absolute top-[38%] left-[2%] w-24 h-auto">
+        <img src={GamesIcon} className="w-full h-full [image-rendering:pixelated]" />
+        <div className="absolute top-20 left-0 text-[#83B0E1] text-lg font-pixel">games.exe</div>
+      </div>
+      */}
+
+      {isMusicOpen && (
+        <div className="absolute top-[30%] right-10 bg-[#83B0E1] text-white w-[20%] h-[20%] flex items-center justify-center pt-10">
+          <div className="absolute top-2 left-5 text-white text-lg font-pixel">
             music player
           </div>
-        <div className="bg-white w-[95%] h-[93%] relative border-8 border-[#AECBEB] flex items-center justify-center gap-8">
-          {/* back button */}
-          <button onClick={() => setCurrentIndex((prev) =>
-            prev == 0 ? playlist.length - 1 : prev - 1
-          )}>
-            <img src={BackButton} />
-          </button>
-          
-          {/* play/pause button */}
-          <button onClick={() => setIsPlaying(!isPlaying)}>
-            <img src={isPlaying ? PlayButton : PauseButton}/>
-            <audio
-              ref={audioRef}
-              src={playlist[currentIndex]}
-              onEnded={handleNext}
-            />
-          </button>
 
-          {/* skip button */}
-          <button onClick={handleNext}>
-            <img src={SkipButton} />
-          </button>
-          
-          
+          <div className="bg-white w-[95%] h-[93%] relative border-8 border-[#AECBEB] flex items-center justify-center gap-8">
+            {/* back button */}
+            <button
+              onClick={() =>
+                setCurrentIndex((prev) => (prev === 0 ? playlist.length - 1 : prev - 1))
+              }
+            >
+              <img src={BackButton} />
+            </button>
 
+            {/* play/pause button */}
+            <button onClick={() => setIsPlaying(!isPlaying)}>
+              <img src={isPlaying ? PlayButton : PauseButton} />
+            </button>
 
-          {/* volume button */}
-          
+            {/* skip button */}
+            <button onClick={handleNext}>
+              <img src={SkipButton} />
+            </button>
+          </div>
+
+          {/* close, fullscreen, minimize buttons */}
+          <div className="absolute top-2 right-2 flex gap-2">
+            <button
+              className="relative bg-[#AECBEB] w-8 h-8"
+              onClick={() => setIsMusicOpen(false)}
+            >
+              <div className="absolute top-1/2 left-1/2 w-1 h-5 bg-white -translate-x-1/2 -translate-y-1/2 rotate-45" />
+              <div className="absolute top-1/2 left-1/2 w-1 h-5 bg-white -translate-x-1/2 -translate-y-1/2 -rotate-45" />
+            </button>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* main window */}
       <div className="flex items-center justify-center h-screen">
@@ -188,13 +221,14 @@ function App() {
                 </div>
               )}
 
-              {/* interests button */}
+              {/* interests button 
               <button
                 className="text-[#83B0E1] text-lg font-pixel text-left ml-4"
                 onClick={() => setInterestsOpen(!interestsOpen)}
               >
                 interests
               </button>
+              */}
 
               {/* interests */}
               {interestsOpen && (
