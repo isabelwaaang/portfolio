@@ -83,6 +83,11 @@ function App() {
     
 
     <main className="bg-[#e1ecf7]">
+      <audio
+        ref={audioRef}
+        src={playlist[currentIndex]}
+        onEnded={handleNext}
+      />
       {/* music player icon */}
       <div
         className="absolute top-[2%] left-[2%] w-24 h-auto cursor-pointer"
