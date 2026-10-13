@@ -38,6 +38,8 @@ import MusicPlayerIcon from "./assets/desktop/icons/music-player.png"
 //import FilmIcon from "./assets/desktop/icons/film-icon.png"
 //import GamesIcon from "./assets/desktop/icons/games-icon.png"
 
+import Click from "./assets/sound-effects/click.mp3"
+
 function App() {
   const [projectsOpen, setProjectsOpen] = useState(false);
   const [experenceOpen, setExperienceOpen] = useState(false);
@@ -50,6 +52,8 @@ function App() {
   const playlist = [FOCUS, HER, ImaginaryFriend, LikeYouBetter, Nxde, TheStarryNight, TimeMachine];
   const [currentIndex, setCurrentIndex] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const navItem = "relative text-[#83B0E1] font-pixel before:absolute before:-left-4 before:top-1/2 before:-translate-y-1/2 before:text-sm hover:before:content-['>']";
 
   useEffect(() => {
     if (!audioRef.current) return;
@@ -69,6 +73,12 @@ function App() {
       prev === playlist.length - 1 ? 0 : prev + 1
     )
   }
+
+  const playClickSound = () => {
+    const sound = new Audio(Click);
+    sound.volume = 0.1;
+    sound.play().catch((err) => console.error("Sound failed:", err));
+  };
 
 
   {/* pathname stuff */}
@@ -90,8 +100,11 @@ function App() {
       />
       {/* music player icon */}
       <div
-        className="absolute top-[2%] left-[2%] w-24 h-auto cursor-pointer"
-        onClick={() => setIsMusicOpen(true)}
+        className="absolute top-[2%] left-[2%] w-24 h-auto cursor-pointer transition-transform duration-300 hover:scale-105 active:scale-95"
+        onClick={() => {
+          playClickSound();
+          setIsMusicOpen(true);
+        }}
       >
         <img src={MusicPlayerIcon} className="w-full h-full [image-rendering:pixelated]" />
         <div className="absolute top-20 left-1 text-[#83B0E1] text-lg font-pixel">music.exe</div>
@@ -142,7 +155,10 @@ function App() {
           <div className="absolute top-2 right-2 flex gap-2">
             <button
               className="relative bg-[#AECBEB] w-8 h-8"
-              onClick={() => setIsMusicOpen(false)}
+              onClick={() => {
+                setIsMusicOpen(false);
+                playClickSound();
+              }}
             >
               <div className="absolute top-1/2 left-1/2 w-1 h-5 bg-white -translate-x-1/2 -translate-y-1/2 rotate-45" />
               <div className="absolute top-1/2 left-1/2 w-1 h-5 bg-white -translate-x-1/2 -translate-y-1/2 -rotate-45" />
@@ -166,18 +182,23 @@ function App() {
             <div className="bg-white w-[30%] h-[100%] border-8 border-[#AECBEB] p-4 pl-6 flex flex-col gap-2 overflow-auto">
               <Link
                 to="/"
+                onClick={() => playClickSound()}
                 className="text-[#83B0E1] text-lg font-pixel text-left">
                 local disk [ i: ]
               </Link>
               <Link
                 to="/about-me"
-                className="text-[#83B0E1] text-lg font-pixel text-left ml-4">
+                onClick={() => playClickSound()}
+                className={`${navItem} text-lg text-left ml-4`}>
                 about-me
               </Link>
               {/* projects button */}
               <button
-                className="text-[#83B0E1] text-lg font-pixel text-left ml-4"
-                onClick={() => setProjectsOpen(!projectsOpen)}
+                className={`${navItem} text-lg text-left ml-4`}
+                onClick={() => {
+                  setProjectsOpen(!projectsOpen);
+                  playClickSound();
+                }}
               >
                 projects
               </button>
@@ -187,28 +208,35 @@ function App() {
                 <div className="ml-8 mt-1 flex flex-col gap-1">
                   <Link
                     to="/lily"
-                    className="text-[#83B0E1] font-pixel">lily
+                    onClick={() => playClickSound()}
+                    className={navItem}>lily
                   </Link>
                   <Link
                     to="/mail-mares"
-                    className="text-[#83B0E1] font-pixel">mail mares
+                    onClick={() => playClickSound()}
+                    className={navItem}>mail mares
                   </Link>
                   
                   <Link
                     to="/potions"
-                    className="text-[#83B0E1] font-pixel">potions
+                    onClick={() => playClickSound()}
+                    className={navItem}>potions
                   </Link>
                   <Link
                     to="/vamoose"
-                    className="text-[#83B0E1] font-pixel">vamoose
+                    onClick={() => playClickSound()}
+                    className={navItem}>vamoose
                   </Link>
                 </div>
               )}
 
               {/* experience button */}
               <button
-                className="text-[#83B0E1] text-lg font-pixel text-left ml-4"
-                onClick={() => setExperienceOpen(!experenceOpen)}
+                className={`${navItem} text-lg text-left ml-4`}
+                onClick={() => {
+                  setExperienceOpen(!experenceOpen);
+                  playClickSound();
+                }}
               >
                 experience
               </button>
@@ -218,15 +246,18 @@ function App() {
                 <div className="ml-8 mt-1 flex flex-col gap-1">
                   <Link
                     to="/logease"
-                    className="text-[#83B0E1] font-pixel">logease
+                    onClick={() => playClickSound()}
+                    className={navItem}>logease
                   </Link>
                   <Link
                     to="/saints-robotics"
-                    className="text-[#83B0E1] font-pixel">saints robotics
+                    onClick={() => playClickSound()}
+                    className={navItem}>saints robotics
                   </Link>
                   <Link
                     to="/quizbowl"
-                    className="text-[#83B0E1] font-pixel">quizbowl
+                    onClick={() => playClickSound()}
+                    className={navItem}>quizbowl
                   </Link>
                 </div>
               )}
@@ -271,7 +302,8 @@ function App() {
 
               <Link
                 to="/contact"
-                className="text-[#83B0E1] text-lg font-pixel text-left ml-4">
+                onClick={() => playClickSound()}
+                className={`${navItem} text-lg text-left ml-4`}>
                 contact
               </Link>
             </div>
