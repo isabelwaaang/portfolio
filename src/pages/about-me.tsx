@@ -63,9 +63,12 @@ export default function AboutMe(){
             </div>
 
             {/*skills boxes */}
-            <div className="flex flex-wrap gap-2 mt-2 pl-2">
+            <div className="flex flex-wrap gap-2 mt-2 pl-2 pb-3">
                 <div className="bg-[#83B0E1] text-white px-3 py-1 rounded-sm text-sm font-pixel">
                     python
+                </div>
+                <div className="bg-[#83B0E1] text-white px-3 py-1 rounded-sm text-sm font-pixel">
+                    c++
                 </div>
                 <div className="bg-[#83B0E1] text-white px-3 py-1 rounded-sm text-sm font-pixel">
                     java
@@ -99,6 +102,18 @@ export default function AboutMe(){
                 </div>
                 <div className="bg-[#83B0E1] text-white px-3 py-1 rounded-sm text-sm font-pixel">
                     unity
+                </div>
+                <div className="bg-[#83B0E1] text-white px-3 py-1 rounded-sm text-sm font-pixel">
+                    docker
+                </div>
+                <div className="bg-[#83B0E1] text-white px-3 py-1 rounded-sm text-sm font-pixel">
+                    mysql
+                </div>
+                <div className="bg-[#83B0E1] text-white px-3 py-1 rounded-sm text-sm font-pixel">
+                    directus
+                </div>
+                <div className="bg-[#83B0E1] text-white px-3 py-1 rounded-sm text-sm font-pixel">
+                    verilog
                 </div>
             </div>
         </main>
