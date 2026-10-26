@@ -40,6 +40,8 @@ import MusicPlayerIcon from "./assets/desktop/icons/music-player.png"
 
 import Click from "./assets/sound-effects/click.mp3"
 
+import { useDraggable } from "./useDraggable";
+
 function App() {
   const [projectsOpen, setProjectsOpen] = useState(false);
   const [experenceOpen, setExperienceOpen] = useState(false);
@@ -54,6 +56,9 @@ function App() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const navItem = "relative text-[#83B0E1] font-pixel before:absolute before:-left-4 before:top-1/2 before:-translate-y-1/2 before:text-sm hover:before:content-['>']";
+
+  const musicWin = useDraggable();
+  const [front, setFront] = useState<"main" | "music">("main");
 
   useEffect(() => {
     if (!audioRef.current) return;
@@ -87,7 +92,6 @@ function App() {
   location.pathname === "/"
     ? "C:\\users\\isabel\\home"
     : `C:\\users\\isabel${location.pathname.replaceAll("/", "\\")}`;
-
 
   return (
     
@@ -125,8 +129,14 @@ function App() {
       */}
 
       {isMusicOpen && (
-        <div className="absolute top-[30%] right-10 bg-[#83B0E1] text-white w-[20%] h-[20%] flex items-center justify-center pt-10">
-          <div className="absolute top-2 left-5 text-white text-lg font-pixel">
+        <div
+          style={{ ...musicWin.style, zIndex: front === "music" ? 20 : 10 }}
+          onPointerDown={() => setFront("music")}
+          className="absolute top-[40%] right-10 bg-[#83B0E1] text-white w-[20%] h-[20%] flex items-center justify-center pt-10"
+        >
+          <div {...musicWin.handle} className="absolute top-0 left-0 w-full h-12" />
+
+          <div className="absolute top-2 left-5 text-white text-lg font-pixel pointer-events-none">
             music player
           </div>
 
@@ -151,7 +161,7 @@ function App() {
             </button>
           </div>
 
-          {/* close, fullscreen, minimize buttons */}
+          {/* close button */}
           <div className="absolute top-2 right-2 flex gap-2">
             <button
               className="relative bg-[#AECBEB] w-8 h-8"
@@ -166,6 +176,52 @@ function App() {
           </div>
         </div>
       )}
+      
+
+      {/* undraggable music window
+      {isMusicOpen && (
+        <div className="absolute top-[30%] right-10 bg-[#83B0E1] text-white w-[20%] h-[20%] flex items-center justify-center pt-10">
+          <div className="absolute top-2 left-5 text-white text-lg font-pixel">
+            music player
+          </div>
+
+          <div className="bg-white w-[95%] h-[93%] relative border-8 border-[#AECBEB] flex items-center justify-center gap-8">
+            {/* back button 
+            <button
+              onClick={() =>
+                setCurrentIndex((prev) => (prev === 0 ? playlist.length - 1 : prev - 1))
+              }
+            >
+              <img src={BackButton} />
+            </button>
+
+            {/* play/pause button 
+            <button onClick={() => setIsPlaying(!isPlaying)}>
+              <img src={isPlaying ? PlayButton : PauseButton} />
+            </button>
+
+            {/* skip button 
+            <button onClick={handleNext}>
+              <img src={SkipButton} />
+            </button>
+          </div>
+
+          {/* close, fullscreen, minimize buttons 
+          <div className="absolute top-2 right-2 flex gap-2">
+            <button
+              className="relative bg-[#AECBEB] w-8 h-8"
+              onClick={() => {
+                setIsMusicOpen(false);
+                playClickSound();
+              }}
+            >
+              <div className="absolute top-1/2 left-1/2 w-1 h-5 bg-white -translate-x-1/2 -translate-y-1/2 rotate-45" />
+              <div className="absolute top-1/2 left-1/2 w-1 h-5 bg-white -translate-x-1/2 -translate-y-1/2 -rotate-45" />
+            </button>
+          </div>
+        </div>
+      )}
+      */}
 
       {/* main window */}
       <div className="flex items-center justify-center h-screen">
@@ -351,7 +407,7 @@ function App() {
           </div>
 
 
-          {/* close, fullscreen, minimize buttons */}
+          {/* close, fullscreen, minimize buttons 
           <div className="absolute top-4 right-5 flex gap-2">
             <div className="bg-[#AECBEB] w-8 h-8">
               <div className="absolute bottom-1 left-1 bg-white w-4 h-1" />
@@ -366,6 +422,7 @@ function App() {
               <div className="absolute top-1/2 left-24 w-1 h-5 bg-white -translate-x-1/2 -translate-y-1/2 -rotate-45 origin-center"></div>
             </div>
           </div>
+          */}
 
         </div>
       </div>
